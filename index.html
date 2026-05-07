@@ -7,31 +7,154 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body{font-family:'Kanit',sans-serif;background-color:#030303;color:#fff;margin:0;user-select:none;overflow-x:hidden}
-        .bg-gradient{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 0%,#0d2a17 0%,#030303 70%);z-index:-1}
-        .glass-card{background:rgba(255,255,255,0.01);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.05);border-radius:40px;transition:0.4s}
-        .btn-action{background:#22c55e;color:#000;font-weight:800;transition:0.3s}
-        .btn-action:hover{background:#fff;box-shadow:0 0 30px #22c55e}
-        #main-ui{opacity:0;transition:0.5s}
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #030303;
+            color: #ffffff;
+            margin: 0;
+            user-select: none;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, #0d2a17 0%, #030303 70%);
+            z-index: -1;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 40px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: #22c55e;
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(34, 197, 94, 0.1);
+        }
+
+        .btn-action {
+            background: #22c55e;
+            color: #000;
+            font-weight: 800;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            background: #ffffff;
+            box-shadow: 0 0 30px #22c55e;
+        }
+
+        .status-badge {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 6px; height: 6px; background: #22c55e; border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 10px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
+
     <div class="bg-gradient"></div>
-    <div id="main-ui" class="flex-grow flex flex-col"></div>
+
+    <nav class="w-full py-6 px-10 flex justify-between items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50">
+        <div class="text-2xl font-extrabold italic tracking-tighter uppercase">
+            ATTACK <span class="text-green-500 text-shadow-[0_0_10px_#22c55e]">HUB</span>
+        </div>
+        <button onclick="toggleModal('contactModal')" class="text-[11px] font-bold uppercase tracking-widest border-b border-green-500 pb-1 hover:text-green-500 transition">
+            ติดต่อสอบถาม Discord
+        </button>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-6 py-10">
+        
+        <div class="glass-card max-w-[420px] w-full p-8 relative overflow-hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    สถานะ: ONLINE
+                </div>
+                <span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">อัพเดทล่าสุด 2026</span>
+            </div>
+
+            <div class="relative group rounded-3xl overflow-hidden mb-8 border border-white/10 shadow-2xl">
+                <img src="https://i.ibb.co/HT78Jvzp/20260507-121022.png" class="w-full h-72 object-cover transition duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent"></div>
+            </div>
+
+            <div class="space-y-5">
+                <h2 class="text-3xl font-black italic uppercase leading-none tracking-tight">ALL MAP SCRIPT</h2>
+                
+                <div class="space-y-2 bg-white/p-5 rounded-2xl border border-white/5">
+                    <div class="flex items-center justify-between text-[9px]">
+                        <span class="text-gray-400">รองรับแมพ:</span>
+                        <span class="text-white font-bold">MM2, Anime Apocalypse</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[9px]">
+                        <span class="text-gray-400">ตัวรันที่แนะนำ:</span>
+                        <span class="text-white font-bold">Delta, Wave, Swift (และอื่นๆ ถ้าUNCสูงๆ)</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[9px] pt-1 border-t border-white/5">
+                        <span class="text-red-500/80 font-bold">ไม่รองรับตัวรัน:</span>
+                        <span class="text-red-500 font-extrabold italic">Xeno, Solara (อาจจะรันไม่ติด)</span>
+                    </div>
+                </div>
+
+                <button onclick="toggleModal('buyModal')" class="btn-action w-full py-5 rounded-2xl text-[13px] uppercase mt-2 active:scale-95 shadow-lg">
+                    รับสคริปต์ใช้งาน
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-8 text-center text-[10px] text-gray-600 uppercase tracking-[5px]">
+        © ATTACK HUB OFFICIAL 2026
+    </footer>
+
+    <div id="contactModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-black/95 backdrop-blur-xl">
+        <div class="glass-card max-w-xs w-full p-10 text-center">
+            <h3 class="text-xl font-bold uppercase mb-8 italic">Support</h3>
+            <a href="https://discord.gg/Um6zu72WTa" target="_blank" class="block w-full bg-[#5865f2] py-4 rounded-2xl text-xs font-extrabold uppercase mb-4 shadow-xl">Discord</a>
+            <button onclick="toggleModal('contactModal')" class="text-[10px] text-gray-500 uppercase font-bold hover:text-white">ปิดหน้าต่าง</button>
+        </div>
+    </div>
+
+    <div id="buyModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-black/95 backdrop-blur-xl">
+        <div class="glass-card max-w-xs w-full p-10 text-center border-t-2 border-green-500">
+            <h3 class="text-xl font-bold uppercase mb-2 italic text-green-500 text-shadow-[0_0_10px_#22c55e]">Success</h3>
+            <p class="text-[11px] text-gray-400 mb-8 font-light">รับข้อมูลและสคริปต์ต่อในดิสคอร์ด</p>
+            <a href="https://discord.gg/Um6zu72WTa" target="_blank" class="block w-full btn-action py-4 rounded-2xl text-xs font-extrabold uppercase mb-4">เข้ากลุ่ม Discord</a>
+            <button onclick="toggleModal('buyModal')" class="text-[10px] text-gray-500 uppercase font-bold hover:text-white">ยกเลิก</button>
+        </div>
+    </div>
 
     <script>
-        /* ATTACK HUB EXCLUSIVE PROTECTION */
-        const _0x1a2b = ["\x34\x44\x49\x56", "\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C", "\x61\x74\x6F\x62"];
-        const _content = "PGRpdiBjbGFzcz0idy1mdWxsIHB5LTYgcHgtMTAgZmxleCBqdXN0aWZ5LWJldHdlZW4gaXRlbXMtY2VudGVyIGJvcmRlci1iIGJvcmRlci13aGl0ZS81IGJhY2tkcm9wLWJsdXItbWQgc3RpY2t5IHRvcC0wIHotNTAiPjxkaXYgY2xhc3M9InRleHQtMnhsIGZvbnQtZXh0cmFib2xkIGl0YWxpYyB0cmFja2luZy10aWdodGVyIHVwcGVyY2FzZSI+QVRUQUNLIDxzcGFuIGNsYXNzPSJ0ZXh0LWdyZWVuLTUwMCB0ZXh0LXNoYWRvdy1bMF8wXzEwcGhfIzIyYzU1ZV0iPkhVQjwvc3Bhbj48L2Rpdj48YnV0dG9uIG9uY2xpY2s9InRnbE1kbCgnY29udGFjdE1vZGFsJykiIGNsYXNzPSJ0ZXh0LVsxMXB4XSBmb250LWJvbGQgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVzdCBib3JkZXItYiBib3JkZXItZ3JlZW4tNTAwIHBiLTEgaG92ZXI6dGV4dC1ncmVlbi01MDAiPuCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguOCguDwvYnV0dG9uPjwvZGl2PjxtYWluIGNsYXNzPSJmbGV4LWdyb3cgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgcHgtNiBweS0xMCI+PGRpdiBjbGFzcz0iZ2xhc3MtY2FyZCBtYXgtdy1bNDIwcHhdIHctZnVsbCBwLTggcmVsYXRpdmUgb3ZlcmZsb3ctaGlkZGVuIj48ZGl2IGNsYXNzPSJmbGV4IGp1c3RpZnktYmV0d2VlbiBpdGVtcy1jZW50ZXIgbWItNiI+PGRpdiBjbGFzcz0ic3RhdHVzLWJhZGdlIGZsZXggaXRlbXMtY2VudGVyIGdhcC0yIGJnLWdyZWVuLTUwMC8xMCBweC0zIHB5LTEgcm91bmRlZC1mdWxsIHRleHQtWzExcHhdIGZvbnQtYm9sZCB0ZXh0LWdyZWVuLTUwMCI+PHNwYW4gY2xhc3M9InctMS41IGgtMS41IGJnLWdyZWVuLTUwMCByb3VuZGVkLWZ1bGwgYW5pbWF0ZS1wdWxzZSI+PC9zcGFuPuCguOCguOCguOCguOCguDogT05MSU5FPC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0icmVsYXRpdmUgcm91bmRlZC0zeGwgb3ZlcmZsb3ctaGlkZGVuIG1iLTggYm9yZGVyIGJvcmRlci13aGl0ZS8xMCI+PGltZyBzcmM9Imh0dHBzOi8vaS5pYmIuY28vSFQ3OEp2enAvMjAyNjA1MDctMTIxMDIyLnBuZyIgY2xhc3M9InctZnVsbCBoLTcyIG9iamVjdC1jb3ZlciI+PC9kaXY+PGRpdiBjbGFzcz0ic3BhY2UteS01Ij48aDIgY2xhc3M9InRleHQtM3hsIGZvbnQtYmxhY2sgaXRhbGljIHVwcGVyY2FzZSI+QUxMIE1BUCBTQ1JJUFRDL2gyPjxkaXYgY2xhc3M9InNwYWNlLXktMiBiZy13aGl0ZS81IHAtNSByb3VuZGVkLTJ4bCI+PGRpdiBjbGFzcz0iZmxleCBqdXN0aWZ5LWJldHdlZW4gdGV4dC1bOXB4XSI+PHNwYW4gY2xhc3M9InRleHQtZ3JheS00MDAiPuCguOCguOCguOCguOCguOCguOCguDogTU0yLCBBbmltZSBBA8L3NwYW4+PC9kaXY+PC9kaXY+PGJ1dHRvbiBvbmNsaWNrPSJ0Z2xNZGwoJ2J1eU1vZGFsJykiIGNsYXNzPSJidG4tYWN0aW9uIHctZnVsbCBweS01IHJvdW5kZWQtMnhsIHRleHQtWzEzcHhdIHVwcGVyY2FzZSI+4Lij4Lix4Lia4Liq4LiE4Lij4Li04Lib4LiV4LmI4Lif4LiH4LiH4Liy4LiZPC9idXR0b24+PC9kaXY+PC9kaXY+PC9tYWluPjxkaXYgaWQ9ImNvbnRhY3RNb2RhbCIgY2xhc3M9ImZpeGVkIGluc2V0LTAgaGlkZGVuIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBiZy1ibGFjay85NSBiYWNrZHJvcC1ibHVyLXhsIHo1MCI+PGRpdiBjbGFzcz0iZ2xhc3MtY2FyZCBwLTEwIHRleHQtY2VudGVyIj48aDMgY2xhc3M9Im1iLTggZm9udC1ib2xkIj5ESVNDT1JEPC9oMz48YSBocmVmPSJodHRwczovL2Rpc2NvcmQuZ2cvVW02enU3MldUYSIgY2xhc3M9ImJsb2NrIHctZnVsbCBiZy1bIzU4NjVmMl0gcHktNCByb3VuZGVkLTJ4bCBtYi00Ij5KT0lOPC9hPjxidXR0b24gb25jbGljaz0idGdsTWRsKCdjb250YWN0TW9kYWwnKSI+Q0xPU0U8L2J1dHRvbj48L2Rpdj48L2Rpdj48ZGl2IGlkPSJidXlNb2RhbCIgY2xhc3M9ImZpeGVkIGluc2V0LTAgaGlkZGVuIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBiZy1ibGFjay85NSBiYWNrZHJvcC1ibHVyLXhsIHo1MCI+PGRpdiBjbGFzcz0iZ2xhc3MtY2FyZCBwLTEwIHRleHQtY2VudGVyIGJvcmRlci1ncmVlbi01MDAiPjxoMyBjbGFzcz0idGV4dC1ncmVlbi01MDAgbWItMiI+U1VDQ0VTUzwvaDM+PGEgaHJlZj0iaHR0cHM6Ly9kaXNjb3JkLmdnL1VtNnp1NzJXVGEiIGNsYXNzPSJidG4tYWN0aW9uIGJsb2NrIHctZnVsbCBweS00IHJvdW5kZWQtMnhsIG1iLTQiPkdFVCBTQ1JJUFRTwvY>PGJ1dHRvbiBvbmNsaWNrPSJ0Z2xNZGwoJ2J1eU1vZGFsJykiPkNBTkNFTDwvYnV0dG9uPjwvZGl2PjwvZGl2Pg==";
-
-        document.getElementById("main-ui")[_0x1a2b[1]] = window[_0x1a2b[2]](_content);
-        document.getElementById("main-ui").style.opacity = "1";
-
-        function tglMdl(_0xce){const _0xf=document.getElementById(_0xce);_0xf.classList.toggle("hidden");_0xf.classList.toggle("flex")}
-        
-        /* Disable Inspect Elements */
-        document.addEventListener("contextmenu",(_0x0)=>{_0x0.preventDefault()});
-        document.onkeydown=function(_0x0){if(_0x0.keyCode==123||(_0x0.ctrlKey&&_0x0.shiftKey&&(_0x0.keyCode==73||_0x0.keyCode==74))||(_0x0.ctrlKey&&_0x0.keyCode==85)){return false}};
+        function toggleModal(id) {
+            const m = document.getElementById(id);
+            m.classList.toggle('hidden');
+            m.classList.toggle('flex');
+        }
     </script>
 </body>
 </html>
